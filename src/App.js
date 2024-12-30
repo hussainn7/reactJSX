@@ -1,0 +1,347 @@
+import React, {useEffect, useState} from "react";
+import { useLocation } from 'react-router-dom';
+
+import "./App.css";
+
+import { enableInfiniteScroll } from "./infiniteScroll";
+// Import your local images
+import img1 from "./images/1.png";
+import img2 from "./images/2.jpg";
+import img3 from "./images/3.png";
+import img4 from "./images/4.png";
+
+
+function App() {
+
+   enableInfiniteScroll();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitting form with data:", formData);
+
+    fetch("http://127.0.0.1:5000/send-email", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(formData),
+})
+
+    
+      .then((response) => response.json())
+      .then((data) => {
+        alert(data.message);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        alert("Failed to send message. FROM JS (AASRITH PUT FOR INDICATION)");
+        console.log(error);
+      });
+  };
+
+ 
+  
+  // Smooth scrolling to section
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const cards = [
+    { image: img1, label: "Project 1" },
+    { image: img2, label: "Project 2" },
+    { image: img3, label: "Project 3" },
+    { image: img4, label: "Project 4" },
+  ];
+
+
+  useEffect(() => {
+    const cursor = document.querySelector('.cursor');
+
+    if (cursor) {
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX - 10 + 'px'; 
+        cursor.style.top = e.clientY - 10 + 'px';
+      });
+    }
+    return () => {
+      document.removeEventListener('mousemove', () => {});
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   // Enable infinite scroll for projects grid
+  //   enableInfiniteScroll();
+  // }, []); // Run only once when the component mounts
+
+
+
+  return (
+
+    <div className="App">
+      <header className="navbar">
+  <nav className="navbeta">
+  <a href="/" className="logo-container">
+    <img src="/ScaleUp.png" alt="ScaleUp Logo" className="logo" />
+  </a>
+  <span className="menu-toggle" onClick={toggleMenu}>
+        ☰
+      </span>
+  <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+  <li><a onClick={() => scrollToSection("services")}>Services</a></li>
+    <li><a onClick={() => scrollToSection("projects")}>Projects</a></li>
+    <li><a onClick={() => scrollToSection("testimonials")}>Testimonials</a></li>
+  </ul>
+  <button onClick={() => scrollToSection("discuss")}className="contact"><a href="/contact-us">Book a Call</a></button>
+</nav>
+
+
+<div class="cursor"></div>
+
+
+        
+      </header>
+  
+      <main>
+      <section id="intro/heading">
+  <div className="ellipse1"></div>
+  <div className="ellipse2"></div>
+  <div className="ellipse3"></div>
+  <div className="ellipse4"></div>
+
+  <h1>
+    We Build Stunning Websites,
+    <br />
+    At Low, Affordable Prices.
+  </h1>
+  <p className="intro">
+    ScaleUp specializes in small business web design and development for
+    clients worldwide. Our websites are hand-coded without any page builders to
+    ensure the best performance and maximum ranking!
+  </p>
+  <button className="cta">Book a Call</button>
+</section>
+
+      <br/>
+        <section id="services" className="section">
+  <h2>Our Services</h2>
+  <p>
+    We provide world-class services to scale your business to new
+    heights. Let us help you with design, development, and marketing.
+  </p>
+  {/* CARDS */}
+
+
+    
+
+  <div className="spacing-service-cards">
+    <div className="service-card">
+      <h3>Web and Mobile Development</h3>
+      <p>Transforming innovative concepts into seamless digital experiences. Building solutions that scale with your business.
+      </p>
+    </div>
+    <div className="service-card">
+      <h3>UI/UX Design</h3>
+      <p>Deliver intuitive and engaging designs for a seamless user experience.</p>
+    </div>
+    <div className="service-card">
+      <h3>SMM</h3>
+      <p>Native apps, Cross-platform solutions, Web applications, & Cloud integration
+      </p>
+    </div>
+    <div className="service-card">
+      <h3>SEO</h3>
+      <p>Elevating your digital footprint through data-driven optimization. Conquering search rankings.
+      </p>
+    </div>
+    <div className="service-card">
+      <h3>Branding</h3>
+      <p>Crafting distinctive brand narratives that leave lasting impressions. Bringing your vision to life.</p>
+    </div>
+    <div className="service-card">
+      <h3>Brand Strategy & Marketing</h3>
+      <p>Architecting comprehensive marketing ecosystems. Driving growth through strategic innovation.</p>
+    </div>
+
+  </div>
+</section>
+{/* END OF CARDS */}
+
+
+
+
+<section id="projects" className="section">
+  <h2>Our Projects</h2>
+  <div className="projects-blur-container">
+    <div className="projects-container">
+      <div className="projects-grid" id="projects-grid">
+        {/* Original Project Cards */}
+        <div className="project-card">
+          <img src="/project (1).jpg" alt="Project 1" />
+          <div className="project-title">Project 1</div>
+        </div>
+        <div className="project-card">
+          <img src="/project (3).png" alt="Project 2" />
+          <div className="project-title">Software Development</div>
+        </div>
+        <div className="project-card">
+          <img src="/project (2).png" alt="Project 3" />
+          <div className="project-title">Project 3</div>
+        </div>
+        <div className="project-card">
+          <img src="/project (1).jpg" alt="Project 4" />
+          <div className="project-title">Project 4</div>
+        </div>
+        <div className="project-card">
+          <img src="project (4).png" alt="Project 5" />
+          <div className="project-title">Project 5</div>
+        </div>
+        <div className="project-card">
+          <img src="project(5).png" alt="Project 6" />
+          <div className="project-title">Project 6</div>
+
+          <div className="project-card">
+          <img src="project (4).png" alt="Project 7" />
+          <div className="project-title">Project 7</div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section id="new-section" className="section">
+  <h2>Why Choose ScaleUp?</h2>
+  <div className="choose-us-grid">
+    <div className="choose-us-card">
+      <h3>Expertise You Can Trust</h3>
+      <p>
+        With years of experience in web design, development, and marketing, our
+        team delivers high-quality solutions tailored to your business needs.
+      </p>
+    </div>
+    <div className="choose-us-card">
+      <h3>Affordable Pricing</h3>
+      <p>
+        We provide top-notch services at competitive prices to help you grow
+        without breaking the bank.
+      </p>
+    </div>
+    <div className="choose-us-card">
+      <h3>Customer-Centric Approach</h3>
+      <p>
+        Your success is our priority. We listen to your ideas and ensure
+        they're transformed into reality.
+      </p>
+    </div>
+    <div className="choose-us-card">
+      <h3>Proven Results</h3>
+      <p>
+        From increasing online visibility to boosting conversions, our
+        solutions deliver measurable outcomes.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+        <section id="discuss" className="section">
+        <h2>Discuss Your Project</h2>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Tell us about your project"
+            value={formData.message}
+            onChange={handleInputChange}
+            required
+          ></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      </main>
+
+      <footer class="footer">
+  <div class="footer-left">
+    <h2>SOCIALS</h2>
+    <ul class="social-links">
+        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-center">
+    <h2>Navigation</h2>
+    <ul class="navigation-links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/about-us">About Us</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+</ul>
+  </div>
+  <div class="footer-right">
+  <h2>Contact Us</h2>
+  <a href="mailto:scaleupdigitalagency@gmail.com">smh@scaleupagency.com</a>
+</div>
+
+<div class="footer-bottom">
+  <p>© 2024 ScaleUp Agency. All rights reserved.</p>
+</div>
+
+
+</footer>
+    </div>
+  );
+}
+
+export default App;
