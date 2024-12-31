@@ -10,11 +10,17 @@ body {
 }
 
 .services-cta {
-  margin-top: 20px;
-  height: 95px;
-  width: 190px;
-  border-radius: 20px;
+  margin-top: 1.25rem;
+height: 4.6875rem;
+width: 12.8125rem;
+border-radius: 0.9375rem;
 }
+
+.service-cta:hover {
+  transform: scale(1.05); /* Slight scaling for emphasis */
+  box-shadow: 0 0 50px 25px rgba(0, 123, 255, 0.9); /* Intense, visible glow */
+}
+
 @media  (max-width: 600px) { 
   .services-cta {
     margin-top: 0;
@@ -26,6 +32,7 @@ body {
   height: 3.75rem;
   width: 3.75rem;
   margin-right: 0.9375rem; /* Adjust as needed */
+  
 
 }
  /* .cursor {

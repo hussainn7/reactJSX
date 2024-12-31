@@ -3,6 +3,8 @@ from email.message import EmailMessage
 import smtplib
 import ssl
 from flask_cors import CORS
+import os
+
 
 app = Flask(__name__)
 CORS(app)
@@ -75,5 +77,6 @@ def send_email_endpoint():
 
 
 if __name__ == '__main__':
-    print("Starting Flask server...")  # Debugging
-    app.run(debug=True)
+    print("Starting Flask server...")
+    port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable or default to 5000
+    app.run(host="0.0.0.0", port=port, debug=True)

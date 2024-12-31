@@ -42,29 +42,27 @@ function App() {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
 
-    fetch(`http://127.0.0.1:5000/send-email`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(formData),
-})
-
-    
-      .then((response) => response.json())
-      .then((data) => {
+    fetch(`https://python-react.onrender.com/send-email`, {  // Use the Render public URL here
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then((response) => response.json())
+    .then((data) => {
         alert(data.message);
         setFormData({
-          name: "",
-          email: "",
-          message: "",
+            name: "",
+            email: "",
+            message: "",
         });
-      })
-      .catch((error) => {
+    })
+    .catch((error) => {
         alert("Failed to send message.");
         console.log(error);
-      });
-  };
+    });
+};
 
  
   
