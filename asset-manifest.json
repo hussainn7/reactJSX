@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/reactJSX/static/css/main.9a0589e1.css",
-    "main.js": "/reactJSX/static/js/main.0c45ec82.js",
+    "main.css": "/reactJSX/static/css/main.7306a21f.css",
+    "main.js": "/reactJSX/static/js/main.acf92d63.js",
     "static/js/488.6d5e0b33.chunk.js": "/reactJSX/static/js/488.6d5e0b33.chunk.js",
     "static/media/1.png": "/reactJSX/static/media/1.134595263cdb875d896e.png",
     "static/media/4.png": "/reactJSX/static/media/4.a522d55da95d4a3a4f07.png",
     "static/media/2.jpg": "/reactJSX/static/media/2.55921f8fa1eeb76d93b7.jpg",
     "static/media/3.png": "/reactJSX/static/media/3.0e34d616d2da6292d260.png",
     "index.html": "/reactJSX/index.html",
-    "main.9a0589e1.css.map": "/reactJSX/static/css/main.9a0589e1.css.map",
-    "main.0c45ec82.js.map": "/reactJSX/static/js/main.0c45ec82.js.map",
+    "main.7306a21f.css.map": "/reactJSX/static/css/main.7306a21f.css.map",
+    "main.acf92d63.js.map": "/reactJSX/static/js/main.acf92d63.js.map",
     "488.6d5e0b33.chunk.js.map": "/reactJSX/static/js/488.6d5e0b33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a0589e1.css",
-    "static/js/main.0c45ec82.js"
+    "static/css/main.7306a21f.css",
+    "static/js/main.acf92d63.js"
   ]
 }
