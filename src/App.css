@@ -9,6 +9,25 @@ body {
   background: #ffffff;
 }
 
+.services-cta {
+  margin-top: 20px;
+  height: 95px;
+  width: 190px;
+  border-radius: 20px;
+}
+@media  (max-width: 600px) { 
+  .services-cta {
+    margin-top: 0;
+    height: 75px;
+    width: 130px;
+  }
+}
+.service-icons {
+  height: 3.75rem;
+  width: 3.75rem;
+  margin-right: 0.9375rem; /* Adjust as needed */
+
+}
  /* .cursor {
   width: 20px;
   height: 20px;

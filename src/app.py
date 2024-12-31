@@ -38,6 +38,8 @@ def send_email(to_email, subject, body_text):
 
 @app.route('/send-email', methods=['POST'])
 def send_email_endpoint():
+    print("Request method:", request.method)  # Log request method
+    print("Request JSON:", request.json)      # Log received data
     try:
         print("Received a POST request to /send-email.")  # Debugging
         # Get JSON data from the request

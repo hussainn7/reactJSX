@@ -16,9 +16,6 @@ function App() {
   
   const typedRef = useRef(null);
 
-
-   enableInfiniteScroll();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -45,7 +42,7 @@ function App() {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
 
-    fetch(`${process.env.REACT_APP_API_URL}/send-email`, {
+    fetch(`http://127.0.0.1:5000/send-email`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -196,32 +193,51 @@ function App() {
   <div className="spacing-service-cards">
     <div className="service-card">
       <h3>Web and Mobile Development</h3>
-      <p>Transforming innovative concepts into seamless digital experiences. Building solutions that scale with your business.
+      <p>Crafting innovative digital solutions that grow with your business.
       </p>
+      <img src={`${process.env.PUBLIC_URL}/flutter.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/logo512.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/tailwind.png`}  className="service-icons" alt="Project 1" />
+
     </div>
     <div className="service-card">
       <h3>UI/UX Design</h3>
       <p>Deliver intuitive and engaging designs for a seamless user experience.</p>
+      <img src={`${process.env.PUBLIC_URL}/Adobe_Illustrator_CC.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Adobe_Photoshop_CC.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Figma.svg`}  className="service-icons" alt="Project 1" />
+
     </div>
     <div className="service-card">
-      <h3>SMM</h3>
+      <h3>Social Media Marketing</h3>
       <p>Native apps, Cross-platform solutions, Web applications, & Cloud integration
       </p>
+      <img src={`${process.env.PUBLIC_URL}/tiktok.webp`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Instagram.svg`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/meta.svg`}  className="service-icons" alt="Project 1" />
+
     </div>
     <div className="service-card">
-      <h3>SEO</h3>
-      <p>Elevating your digital footprint through data-driven optimization. Conquering search rankings.
+      <h3>Search Engine Optimization</h3>
+      <p>Elevating your digital footprint through data-driven optimization. 
       </p>
+      <img src={`${process.env.PUBLIC_URL}/SEO.svg`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Google_Analytics.svg`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Google__G__Logo.svg`}  className="service-icons" alt="Project 1" />
     </div>
     <div className="service-card">
       <h3>Branding</h3>
-      <p>Crafting distinctive brand narratives that leave lasting impressions. Bringing your vision to life.</p>
+      <p>Creating unique brand stories that resonate. Turning your vision into reality.</p>
+      <img src={`${process.env.PUBLIC_URL}/Canva.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/wix.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/Adobe_Illustrator_CC.png`}  className="service-icons" alt="Project 1" />
+
     </div>
     <div className="service-card">
-      <h3>Brand Strategy & Marketing</h3>
-      <p>Architecting comprehensive marketing ecosystems. Driving growth through strategic innovation.</p>
+      <h3>Like Our Services?</h3>
+      <p>To book a call with one of our representatives, please click the button below!!</p>
+      <button onClick={() => scrollToSection("discuss")}className="services-cta">Book a Call</button>
     </div>
-
   </div>
 </section>
 {/* END OF CARDS */}
@@ -326,6 +342,7 @@ function App() {
             required
           />
           <textarea
+            type="text"
             name="message"
             placeholder="Tell us about your project"
             value={formData.message}
