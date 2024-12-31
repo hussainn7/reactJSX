@@ -1,6 +1,3 @@
-import React, {useEffect, useState} from "react";
-import { useLocation } from 'react-router-dom';
-
 import "./App.css";
 
 import { enableInfiniteScroll } from "./infiniteScroll";
@@ -10,14 +7,22 @@ import img2 from "./images/2.jpg";
 import img3 from "./images/3.png";
 import img4 from "./images/4.png";
 
+import React, { useEffect, useState, useRef } from "react";
+
+import Typed from "typed.js";
+
 
 function App() {
+  
+  const typedRef = useRef(null);
+
 
    enableInfiniteScroll();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -40,7 +45,7 @@ function App() {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
 
-    fetch("http://127.0.0.1:5000/send-email", {
+    fetch(`${process.env.REACT_APP_API_URL}/send-email`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -59,7 +64,7 @@ function App() {
         });
       })
       .catch((error) => {
-        alert("Failed to send message. FROM JS (AASRITH PUT FOR INDICATION)");
+        alert("Failed to send message.");
         console.log(error);
       });
   };
@@ -96,10 +101,50 @@ function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   // Enable infinite scroll for projects grid
-  //   enableInfiniteScroll();
-  // }, []); // Run only once when the component mounts
+  useEffect(() => {
+    const moveEllipse = (ellipse) => {
+      const screenWidth = window.innerWidth - 50; // Adjust for ellipse size
+      const screenHeight = window.innerHeight - 50;
+
+      const randomX = Math.random() * screenWidth;
+      const randomY = Math.random() * screenHeight;
+
+      ellipse.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    };
+
+    const animateEllipses = () => {
+      const ellipses = document.querySelectorAll(' .ellipse3');
+      setInterval(() => {
+        ellipses.forEach(ellipse => moveEllipse(ellipse));
+      }, 2000); // Adjust interval as needed
+    };
+
+    animateEllipses();
+  }, []);
+  
+
+
+  useEffect(() => {
+    // Enable infinite scroll for projects grid
+    enableInfiniteScroll();
+  }, []); // Run only once when the component mounts
+
+  useEffect(() => {
+    const options = {
+      strings: ["Websites", "Softwares", "Designs"],
+      typeSpeed: 150,
+      backSpeed: 100,
+      loop: true,
+    };
+
+    const typed = new Typed(typedRef.current, options);
+
+    // Cleanup to destroy the Typed instance when component unmounts
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
 
 
 
@@ -108,8 +153,8 @@ function App() {
     <div className="App">
       <header className="navbar">
   <nav className="navbeta">
-  <a href="/" className="logo-container">
-    <img src="/ScaleUp.png" alt="ScaleUp Logo" className="logo" />
+  <a onClick={() => scrollToSection("intro/heading")} className="logo-container">
+  <img src={`${process.env.PUBLIC_URL}/ScaleUp.png`} alt="ScaleUp Logo" className="logo" />
   </a>
   <span className="menu-toggle" onClick={toggleMenu}>
         ☰
@@ -117,49 +162,36 @@ function App() {
   <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
   <li><a onClick={() => scrollToSection("services")}>Services</a></li>
     <li><a onClick={() => scrollToSection("projects")}>Projects</a></li>
-    <li><a onClick={() => scrollToSection("testimonials")}>Testimonials</a></li>
+    <li><a onClick={() => scrollToSection("new-section")}>Why Us?</a></li>
   </ul>
-  <button onClick={() => scrollToSection("discuss")}className="contact"><a href="/contact-us">Book a Call</a></button>
+  <button className="contact"><a onClick={() => scrollToSection("discuss")}>Book a Call</a></button>
 </nav>
 
-
-<div class="cursor"></div>
-
-
-        
       </header>
   
       <main>
       <section id="intro/heading">
-  <div className="ellipse1"></div>
-  <div className="ellipse2"></div>
-  <div className="ellipse3"></div>
-  <div className="ellipse4"></div>
 
-  <h1>
-    We Build Stunning Websites,
+  <h1 className='heading-hero'>
+  Stunning <span className="autotype" ref={typedRef}></span>
     <br />
-    At Low, Affordable Prices.
+    Built Affordably.
   </h1>
   <p className="intro">
-    ScaleUp specializes in small business web design and development for
-    clients worldwide. Our websites are hand-coded without any page builders to
-    ensure the best performance and maximum ranking!
+  ScaleUp crafts hand-coded websites for small businesses worldwide, ensuring top performance and optimal rankings without using page builders.
   </p>
-  <button className="cta">Book a Call</button>
+  <button onClick={() => scrollToSection("discuss")}className="cta">Book a Call</button>
+  <div className="ellipse3"></div>
+
 </section>
 
       <br/>
         <section id="services" className="section">
   <h2>Our Services</h2>
   <p>
-    We provide world-class services to scale your business to new
-    heights. Let us help you with design, development, and marketing.
+  Elevate your business with top-tier design, development, and marketing solutions tailored for success.
   </p>
   {/* CARDS */}
-
-
-    
 
   <div className="spacing-service-cards">
     <div className="service-card">
@@ -202,41 +234,36 @@ function App() {
   <div className="projects-blur-container">
     <div className="projects-container">
       <div className="projects-grid" id="projects-grid">
-        {/* Original Project Cards */}
+        {/* Updated Project Cards */}
         <div className="project-card">
-          <img src="/project (1).jpg" alt="Project 1" />
-          <div className="project-title">Project 1</div>
+          <img src={`${process.env.PUBLIC_URL}/projects(5).png`} alt="Project 1" />
+          <div className="project-title">App - Nutrinova: The Smart Calorie Tracker</div>
         </div>
         <div className="project-card">
-          <img src="/project (3).png" alt="Project 2" />
-          <div className="project-title">Software Development</div>
+          <img src={`${process.env.PUBLIC_URL}/project (3).png`} alt="Project 2" />
+          <div className="project-title">Software Development - Weather Prediction</div>
         </div>
         <div className="project-card">
-          <img src="/project (2).png" alt="Project 3" />
-          <div className="project-title">Project 3</div>
+          <img src={`${process.env.PUBLIC_URL}/project (2).png`} alt="Project 3" />
+          <div className="project-title">App- AI Children Learning App</div>
         </div>
         <div className="project-card">
-          <img src="/project (1).jpg" alt="Project 4" />
-          <div className="project-title">Project 4</div>
+          <img src={`${process.env.PUBLIC_URL}/project (1).jpg`} alt="Project 4" />
+          <div className="project-title">Website Development - Sunrise</div>
         </div>
         <div className="project-card">
-          <img src="project (4).png" alt="Project 5" />
-          <div className="project-title">Project 5</div>
+          <img src={`${process.env.PUBLIC_URL}/project (4).png`} alt="Project 5" />
+          <div className="project-title">Website - IT FEST 2024, Kyrgystan</div>
         </div>
         <div className="project-card">
-          <img src="project(5).png" alt="Project 6" />
-          <div className="project-title">Project 6</div>
-
-          <div className="project-card">
-          <img src="project (4).png" alt="Project 7" />
-          <div className="project-title">Project 7</div>
-
-        </div>
+          <img src={`${process.env.PUBLIC_URL}/project (2).png`} alt="Project 6" />
+          <div className="project-title">App- AI Children Learning App</div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
@@ -314,9 +341,11 @@ function App() {
   <div class="footer-left">
     <h2>SOCIALS</h2>
     <ul class="social-links">
-        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/scaleupsys/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/thescaleupp" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61566540658549" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@scaleup_agency" target="_blank" rel="noopener noreferrer">Tiktok</a></li>
+
     </ul>
   </div>
 
@@ -331,7 +360,7 @@ function App() {
   </div>
   <div class="footer-right">
   <h2>Contact Us</h2>
-  <a href="mailto:scaleupdigitalagency@gmail.com">smh@scaleupagency.com</a>
+  <a href="mailto:scaleupdigitalagency@gmail.com">scaleupdigitalagency@gmail.com</a>
 </div>
 
 <div class="footer-bottom">
