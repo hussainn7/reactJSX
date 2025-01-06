@@ -42,12 +42,12 @@ function App() {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
 
-    fetch(`https://python-react.onrender.com/send-email`, {  // Use the Render public URL here
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    fetch(`https://python-react.onrender.com/send-email`, {  
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     })
     .then((response) => response.json())
     .then((data) => {
@@ -74,6 +74,7 @@ function App() {
     }
   };
 
+  
   const cards = [
     { image: img1, label: "Project 1" },
     { image: img2, label: "Project 2" },
@@ -146,41 +147,88 @@ function App() {
   return (
 
     <div className="App">
-      <header className="navbar">
-  <nav className="navbeta">
-  <a onClick={() => scrollToSection("intro/heading")} className="logo-container">
-  <img src={`${process.env.PUBLIC_URL}/ScaleUp.png`} alt="ScaleUp Logo" className="logo" />
-  </a>
-  <span className="menu-toggle" onClick={toggleMenu}>
-        ☰
-      </span>
-  <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-  <li><a onClick={() => scrollToSection("services")}>Services</a></li>
-    <li><a onClick={() => scrollToSection("projects")}>Projects</a></li>
-    <li><a onClick={() => scrollToSection("new-section")}>Why Us?</a></li>
-  </ul>
-  <button className="contact"><a onClick={() => scrollToSection("discuss")}>Book a Call</a></button>
-</nav>
+  <main>
+    <section id="hero" className="hero-section">
+    <div className="navbar-container">
+  <div className="logo-wrapper">
+  <div
+  className="logo"
+  onClick={() => (window.location.href = "/")}
+  role="button"
+  tabIndex="0"
+  aria-label="Go to homepage"
+></div>
 
-      </header>
+  {/* Burger Menu Icon */}
+  <div className="burger-menu-container">
+  <div className="burger-menu" onClick={toggleMenu} role="button" tabIndex="0">
+    <div className="burger-line"></div>
+    <div className="burger-line"></div>
+    <div className="burger-line"></div>
+  </div>
   
-      <main>
-      <section id="intro/heading">
+  {isMenuOpen && (
+    <div className="burger-menu-links active">
+      <button onClick={() => { toggleMenu(); scrollToSection("services"); }} className="nav-link">
+        Services
+      </button>
+      <button onClick={() => { toggleMenu(); scrollToSection("projects"); }} className="nav-link">
+        Projects
+      </button>
+      <button onClick={() => { toggleMenu(); scrollToSection("new-section"); }} className="nav-link">
+        Why Us
+      </button>
+      <button onClick={() => { toggleMenu(); scrollToSection("discuss"); }} className="contact-link">
+        Contact ↗
+      </button>
+    </div>
+  )}
+</div>
 
-  <h1 className='heading-hero'>
-  Stunning <span className="autotype" ref={typedRef}></span>
-    <br />
-    Built Affordably.
-  </h1>
-  <p className="intro">
-  ScaleUp crafts hand-coded websites for small businesses worldwide, ensuring top performance and optimal rankings without using page builders.
-  </p>
-  <button onClick={() => scrollToSection("discuss")}className="cta">Book a Call</button>
-  <div className="ellipse3"></div>
 
-</section>
+  </div>
+  {/* Navbar */}
+  <nav className={`navbar ${isMenuOpen ? "active" : ""}`}>
+              <div className="nav-links">
+                <button onClick={() => scrollToSection("services")} className="nav-link">
+                  Services
+                </button>
+                <button onClick={() => scrollToSection("projects")} className="nav-link">
+                  Projects
+                </button>
+                <button onClick={() => scrollToSection("new-section")} className="nav-link">
+                  Why Us
+                </button>
+              </div>
+              <div className="contact-button">
+                <button onClick={() => scrollToSection("discuss")} className="contact-link">
+                  Contact ↗
+                </button>
+              </div>
+            </nav>
+          </div>
 
-      <br/>
+      <div className="hero-content">
+        <h1 className="hero-heading">
+          We Build Stunning <span className="autotype" ref={typedRef}></span>,
+          <br />
+          At Low, Affordable Prices.
+        </h1>
+        <p className="hero-description">
+          ScaleUp specializes in small business web design and development for clients worldwide.
+          Our websites are hand-coded without any page builders to ensure the best performance and maximum ranking!
+        </p>
+        <div className="hero-buttons">
+          {/* <button className="cta">Book a Call</button> */}
+          <button onClick={() => scrollToSection("discuss")}className="cta">Book a Call</button>
+          <a href="mailto:scaleupdigitalagency@gmail.com" className="cta-button secondary">
+  Contact
+</a>
+        </div>
+      </div>
+    </section>
+  
+
         <section id="services" className="section">
   <h2>Our Services</h2>
   <p>
@@ -226,7 +274,7 @@ function App() {
     <div className="service-card">
       <h3>Branding</h3>
       <p>Creating unique brand stories that resonate. Turning your vision into reality.</p>
-      <img src={`${process.env.PUBLIC_URL}/Canva.png`}  className="service-icons" alt="Project 1" />
+      <img src={`${process.env.PUBLIC_URL}/canva.png`}  className="service-icons" alt="Project 1" />
       <img src={`${process.env.PUBLIC_URL}/wix.png`}  className="service-icons" alt="Project 1" />
       <img src={`${process.env.PUBLIC_URL}/Adobe_Illustrator_CC.png`}  className="service-icons" alt="Project 1" />
 
