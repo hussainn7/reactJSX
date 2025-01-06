@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/reactJSX/static/css/main.2141a561.css",
-    "main.js": "/reactJSX/static/js/main.951498eb.js",
+    "main.css": "/reactJSX/static/css/main.d32c7ebd.css",
+    "main.js": "/reactJSX/static/js/main.2404aef1.js",
     "static/js/488.6d5e0b33.chunk.js": "/reactJSX/static/js/488.6d5e0b33.chunk.js",
+    "static/media/shanghai.png": "/reactJSX/static/media/shanghai.465fbba70efdb46e2d61.png",
     "static/media/1.png": "/reactJSX/static/media/1.134595263cdb875d896e.png",
     "static/media/4.png": "/reactJSX/static/media/4.a522d55da95d4a3a4f07.png",
     "static/media/2.jpg": "/reactJSX/static/media/2.55921f8fa1eeb76d93b7.jpg",
     "static/media/3.png": "/reactJSX/static/media/3.0e34d616d2da6292d260.png",
+    "static/media/Logo.png": "/reactJSX/static/media/Logo.be97201a4a1133d2f540.png",
     "index.html": "/reactJSX/index.html",
-    "main.2141a561.css.map": "/reactJSX/static/css/main.2141a561.css.map",
-    "main.951498eb.js.map": "/reactJSX/static/js/main.951498eb.js.map",
+    "main.d32c7ebd.css.map": "/reactJSX/static/css/main.d32c7ebd.css.map",
+    "main.2404aef1.js.map": "/reactJSX/static/js/main.2404aef1.js.map",
     "488.6d5e0b33.chunk.js.map": "/reactJSX/static/js/488.6d5e0b33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2141a561.css",
-    "static/js/main.951498eb.js"
+    "static/css/main.d32c7ebd.css",
+    "static/js/main.2404aef1.js"
   ]
 }
