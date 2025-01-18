@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/reactJSX/static/css/main.d32c7ebd.css",
-    "main.js": "/reactJSX/static/js/main.2404aef1.js",
+    "main.css": "/reactJSX/static/css/main.d0ec004c.css",
+    "main.js": "/reactJSX/static/js/main.c3e8a3c8.js",
     "static/js/488.6d5e0b33.chunk.js": "/reactJSX/static/js/488.6d5e0b33.chunk.js",
     "static/media/shanghai.png": "/reactJSX/static/media/shanghai.465fbba70efdb46e2d61.png",
     "static/media/1.png": "/reactJSX/static/media/1.134595263cdb875d896e.png",
@@ -10,12 +10,12 @@
     "static/media/3.png": "/reactJSX/static/media/3.0e34d616d2da6292d260.png",
     "static/media/Logo.png": "/reactJSX/static/media/Logo.be97201a4a1133d2f540.png",
     "index.html": "/reactJSX/index.html",
-    "main.d32c7ebd.css.map": "/reactJSX/static/css/main.d32c7ebd.css.map",
-    "main.2404aef1.js.map": "/reactJSX/static/js/main.2404aef1.js.map",
+    "main.d0ec004c.css.map": "/reactJSX/static/css/main.d0ec004c.css.map",
+    "main.c3e8a3c8.js.map": "/reactJSX/static/js/main.c3e8a3c8.js.map",
     "488.6d5e0b33.chunk.js.map": "/reactJSX/static/js/488.6d5e0b33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d32c7ebd.css",
-    "static/js/main.2404aef1.js"
+    "static/css/main.d0ec004c.css",
+    "static/js/main.c3e8a3c8.js"
   ]
 }
